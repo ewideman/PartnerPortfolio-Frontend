@@ -12,8 +12,6 @@ import SignupView from './views/SignupView';
 // layout components
 // import SignupView from './views/SignupView';
 
-
-
 function App() {
  
   return (
