@@ -14,10 +14,13 @@ const UpdatePropertyView = () => {
         imageUrl: "",
         id: ''
     });
-    const id = location.pathname.split('/').pop();
 
+
+    const id = location.pathname.split('/').pop();
+console.log("id",location.pathname.split('/').pop())
     useEffect(() => {
-        axios.get(`${apiUrl}/properties/property/${id}`).then(res => {
+        const ID = location.pathname.split('/').pop();
+        axios.get(`${apiUrl}/properties/property/${ID}`).then(res => {
             setProperty(res.data);
         });
     }, []);
@@ -42,21 +45,26 @@ const UpdatePropertyView = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         // book.genre = book.genre.split(",");
-        const url = `${apiUrl}/properties/property/${property.id}`;
+        const url = `${apiUrl}/properties/property/${id}`;
         const response = await axios.put(url, property);
         navigate('/');
         setProperty({
             name: "",
             address: "",
+            irr: "",
             price: "",
             imageUrl: "",
+            holder:"",
+            mPartner:"",
+            hPhone: "",
+            hEmail: "",
         })
     }
 
     return (
         <div className="container mt-5">
             <form className="form">
-                <h2>Update Property</h2>
+                <h2>Property Information</h2>
                 <input
                     onChange={handleChange}
                     value={property.name}
@@ -82,17 +90,60 @@ const UpdatePropertyView = () => {
                     type="number"
                 />
                 <input
+                    onChange={handleChange}
+                    value={property.Irr}
+                    name="IRR"
+                    className="form-control"
+                    placeholder="Internal Rate of Return Percentage"
+                    type="number"
+                />
+                <input
                     name="imageUrl"
                     onChange={handleChange}
                     value={property.imageUrl}
                     className="form-control"
                     placeholder="imgUrl"
                     type="text"
-                />
+                />            
+                <br></br>    
+                <h2>Ownership Information</h2>
+                <input
+                    name="holder"
+                    onChange={handleChange}
+                    value={property.holder}
+                    className="form-control"
+                    placeholder="Holding Company/ LCC"
+                    type="text"
+                /> 
+                <input
+                    name="mPartner"
+                    onChange={handleChange}
+                    value={property.mPartner}
+                    className="form-control"
+                    placeholder="Managing Parnter"
+                    type="string"
+                /> 
+                
+                <input
+                    name="hPhone"
+                    onChange={handleChange}
+                    value={property.hPhone}
+                    className="form-control"
+                    placeholder="Phone Number"
+                    type="string"
+                /> 
+                <input
+                    name="hEmail"
+                    onChange={handleChange}
+                    value={property.hEmail}
+                    className="form-control"
+                    placeholder="Email"
+                    type="string"
+                /> 
                 <button
                     onClick={handleSubmit}
                     className="btn btn-outline-dark form-control">
-                    Create
+                    Update
                 </button>
             </form>
         </div>
