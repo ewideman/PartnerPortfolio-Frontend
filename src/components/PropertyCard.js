@@ -17,7 +17,7 @@ const PropertyCard = ({ obj, isAdmin }) => {
     }
 
     return (
-        <Card style={{ width: "18rem" }}>
+        <Card>
             <img src={obj.imageUrl} />
             <Card.Body>
                 <Card.Title>{obj.name}</Card.Title>

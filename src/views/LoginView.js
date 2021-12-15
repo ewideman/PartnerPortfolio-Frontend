@@ -80,7 +80,7 @@ const LoginView = () => {
                 <input name = "email" 
                     onChange = {handleChange}
                     value={user.email}
-                    className= "form-control"
+                    className= "form-control mb-2 mt-1"
                     type="text"
                     placeholder="email"/>
                 <input name= "password"

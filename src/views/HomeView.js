@@ -24,11 +24,11 @@ const HomeView = () => {
     return (
         <div className="container mt-5">
           <h2>Property List</h2>
-          <div className="conatiner">
+          <div className="conatiner property-list-container">
             <div className="row">
               {properties.map((property) => (
-                <div key={property._id} className="my-3 col-lg-4 col-md-6 col-sm-12">
-                <PropertyCard obj={property} isAdmin={isAdmin} />
+                <div className="my-3 col-lg-4 col-sm-6">
+                  <PropertyCard key={property._id} obj={property} isAdmin={isAdmin} />
                 </div>
               ))}
             </div>

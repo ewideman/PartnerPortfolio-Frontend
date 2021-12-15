@@ -90,13 +90,59 @@ const AddPropertyView = () => {
                     placeholder="Price"
                     type="number"
                 />
+                 <input
+                    onChange={handleChange}
+                    value={property.irr}
+                    name="irr"
+                    className="form-control"
+                    placeholder="Internal Rate of Return Percentage"
+                    type="number"
+                />
+                
+                <select class="form-select" 
+                    name="propertyType"
+                    onChange={handleChange}
+                >
+                    {
+                    PropertyTypes.map(item => {
+                        return (
+                            <option value={item}>{item}</option>  
+                        )
+                    })
+                    }
+                </select>
+								<select class="form-select" 
+                    name="yearBuilt"
+                    onChange={handleChange}
+                >
+                    {
+                    YearsBuilt.map(item => {
+                        return (
+                            <option value={item}>{item}</option>  
+                        )
+                    })
+                    }
+                </select>
+								<select class="form-select" 
+                    name="bldggRating"
+                    onChange={handleChange}
+                >
+                    {
+                    Ratings.map(item => {
+                        return (
+                            <option value={item}>{item}</option>  
+                        )
+                    })
+                    }
+                </select>
+							
                 <input
-									onChange={handleChange}
-									value={property.irr}
-									name="irr"
-									className="form-control"
-									placeholder="Internal Rate of Return Percentage"
-									type="number"
+                    onChange={handleChange}
+                    value={property.bSize}
+                    name="bSize"
+                    className="form-control"
+                    placeholder="size"
+                    type="number"
                 />
                 <input
                     name="imageUrl"
@@ -105,7 +151,22 @@ const AddPropertyView = () => {
                     className="form-control"
                     placeholder="imgUrl"
                     type="text"
-                />            
+                />        
+                <div class="checkbox">
+                <label>
+                <input 
+                            type="checkbox" 
+                            name="opportunity" 
+                            onChange={(e)=>{
+                                setProperty({
+                                    ...property,
+                                    opportunity: e.target.value == "on" ? true:false,
+                                })
+                            }}
+                        />
+                        Opportunity Zone
+                    </label>
+                    </div>    
                 <br></br>    
                 <h2>Ownership Information</h2>
                 <input
@@ -141,67 +202,7 @@ const AddPropertyView = () => {
                     placeholder="Email"
                     type="string"
                 /> 
-          
-                <select class="form-select" 
-                    name="propertyType"
-                    onChange={handleChange}
-                >
-									{
-									PropertyTypes.map(item => {
-										return (
-											<option value={item}>{item}</option>  
-										)
-									})
-									}
-                </select>
-								<select class="form-select" 
-                    name="yearBuilt"
-                    onChange={handleChange}
-                >
-									{
-									YearsBuilt.map(item => {
-										return (
-											<option value={item}>{item}</option>  
-										)
-									})
-									}
-                </select>
-								<select class="form-select" 
-                    name="bldggRating"
-                    onChange={handleChange}
-                >
-									{
-									Ratings.map(item => {
-										return (
-											<option value={item}>{item}</option>  
-										)
-									})
-									}
-                </select>
-								<div class="checkbox">
-									<label>
-										<input 
-											type="checkbox" 
-											name="opportunity" 
-											onChange={(e)=>{
-												setProperty({
-													...property,
-													opportunity: e.target.value == "on" ? true:false,
-												})
-											}}
-										/>
-										Opportinity
-									</label>
-								</div>
-								<input
-									onChange={handleChange}
-									value={property.bSize}
-									name="bSize"
-									className="form-control"
-									placeholder="size"
-									type="number"
-                />
-                <button
+          <button
                     onClick={handleSubmit}
                     className="btn btn-outline-dark form-control">
                     Create
