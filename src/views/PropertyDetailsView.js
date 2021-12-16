@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Map from '../components/Map';
+import Carousel from '../components/PropCarousel';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 
 const PropertyDetailsView = () => {
@@ -28,9 +29,9 @@ const PropertyDetailsView = () => {
             {
                 property && <>
 
-                    <div className="map-container">
-                        <Map address={property.address} />
-                    </div>
+                    <Carousel slides={property.carousel || []} />
+
+                    
 
                     <Container className="mt-3">
                         <Row>
@@ -78,18 +79,12 @@ const PropertyDetailsView = () => {
                             </Col>
                         </Row>
                     </Container>
-
-                    {/* <img style={{height: 400}} src={property.image} alt="" /> */}
+                    <div className="map-container">
+                        <Map address={property.address} />
+                    </div>
                 </>
             }
-            {/* <p>
-                {property.address?.map((g, i) => (
-                    <>
-                        <span key={i}>{g}</span>
-                        <br />
-                    </>
-                ))}
-            </p> */}
+         
         </div>
     )
 }

@@ -152,18 +152,15 @@ const AddPropertyView = () => {
                     })
                     }
                 </select>
-								<select class="form-select" 
-                    name="yearBuilt"
+               <input
                     onChange={handleChange}
-                >
-                    {
-                    YearsBuilt.map(item => {
-                        return (
-                            <option value={item}>{item}</option>  
-                        )
-                    })
-                    }
-                </select>
+                    value={property.yearBuilt}
+                    name="yearBuilt"
+                    className="form-control"
+                    placeholder="Year Built"
+                    type="number"
+                />
+
 								<select class="form-select" 
                     name="bldgRating"
                     onChange={handleChange}
@@ -182,15 +179,30 @@ const AddPropertyView = () => {
                     value={property.bldgCredit}
                     name="bldgCredit"
                     className="form-control"
-                    placeholder="Property Square Feet"
-                />
-							
+                    placeholder="Bldg Credit Rating"
+                />			
                 <input
                     onChange={handleChange}
                     value={property.bSize}
                     name="bSize"
                     className="form-control"
                     placeholder="size"
+                    type="number"
+                />
+                <input
+                    onChange={handleChange}
+                    value={property.floorNumber}
+                    name="floorNumber"
+                    className="form-control"
+                    placeholder="Number of floors"
+                    type="number"
+                />
+                 <input
+                    onChange={handleChange}
+                    value={property.floorPlate}
+                    name="floorPlate"
+                    className="form-control"
+                    placeholder="Floor Plate"
                     type="number"
                 />
                 <input
