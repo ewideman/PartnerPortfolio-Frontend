@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import Map from '../components/Map';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 

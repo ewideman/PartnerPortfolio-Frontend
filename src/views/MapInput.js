@@ -1,4 +1,4 @@
-import google from 'google';
+ import google from 'google';
 const { compose, withProps, lifecycle } = require("recompose");
 const {
   withScriptjs,

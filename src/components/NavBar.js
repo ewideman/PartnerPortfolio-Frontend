@@ -1,7 +1,8 @@
-import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
+import { Container, Nav, Navbar, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import {handleGoogleLogout} from '../firebase'
 const NavBar = () => {
+   let navigate = useNavigate();
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
@@ -20,6 +21,14 @@ const NavBar = () => {
           <Nav>
             <Link style={{marginRight: "10px"}} to="/signup">Sign Up</Link>
             <Link to="/login">Log In</Link>
+          </Nav>
+          <Nav>
+            <Navbar.Text style={{marginRight: "10px", cursor:'pointer'}}
+              onClick={()=>{
+                handleGoogleLogout();
+                navigate("/login")
+              }}
+            >Logout</Navbar.Text>
           </Nav>
         </Navbar.Collapse>
       </Container>

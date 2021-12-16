@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 // import property from "../../../portfolio-backend/models/property";
 
 const SignupView= () => {

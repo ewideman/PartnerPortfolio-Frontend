@@ -1,18 +1,34 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { PropertyTypes,
+	YearsBuilt,
+	Ratings,
+	SingleMultiOptions} from "../constant/options";
 
-
-const PropertyTypes = ['type1', 'type2', 'type3', 'type4'];
-const YearsBuilt  = ['2019', '2020', '2021'];
-const Ratings = ['1', '2', '3', '4', '5'];
 
 const AddPropertyView = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
     const [property, setProperty] = useState({
-        name: "",
-        address: "",
-        price: "",
+			address: "8633 South Bay Dr.",
+			bSize: "1",
+			bldgCredit: "1",
+			bldgRating: "3",
+			hEmail: "1",
+			hPhone: "1",
+			holder: "1",
+			imageUrl: "1",
+			irr: "10",
+			leaseEndDate: "1",
+			leaseYearsLeft: "1",
+			mPartner: "1",
+			name: "1",
+			price: "0",
+			tenantOccupancy: "1",
+			opportunity: false,
+			propertyType: 'type1',
+			yearBuilt: '2019',
+			
     });
     const navigate = useNavigate();
 
@@ -51,14 +67,39 @@ const AddPropertyView = () => {
         console.log(response)
         navigate('/');
         setProperty({
+            //Bldg Info
             name: "",
-            irr: "",
             address: "",
             price: "",
+            irr: "",
+            opportunity: "",
+            bldgRating: "",
+            yearBuilt: "", 
+            propertyType: "",
+            bSize: "",
+            imageUrl: "",
+
+
+            //Tenant Info
+            tenantOccupancy: "",
+            //occupancy: dropdown
+            tenantSingleMulti: "",
+            //single/multi dropdown
+            leaseYearsLeft: "",
+            //years number
+            leaseEndDate: "",
+
+            //Parking Information
+            parkingSpaces: "",
+            parkingRatio: "",
+            parkingRevenue: "",
+
+            //OwnerInfo
             holder:"",
             mPartner:"",
             hPhone: "",
             hEmail: "",
+            //
         })
     }
 
@@ -124,7 +165,7 @@ const AddPropertyView = () => {
                     }
                 </select>
 								<select class="form-select" 
-                    name="bldggRating"
+                    name="bldgRating"
                     onChange={handleChange}
                 >
                     {
@@ -135,6 +176,14 @@ const AddPropertyView = () => {
                     })
                     }
                 </select>
+                
+                <input
+                    onChange={handleChange}
+                    value={property.bldgCredit}
+                    name="bldgCredit"
+                    className="form-control"
+                    placeholder="Property Square Feet"
+                />
 							
                 <input
                     onChange={handleChange}
@@ -155,19 +204,60 @@ const AddPropertyView = () => {
                 <div class="checkbox">
                 <label>
                 <input 
-                            type="checkbox" 
-                            name="opportunity" 
-                            onChange={(e)=>{
-                                setProperty({
-                                    ...property,
-                                    opportunity: e.target.value == "on" ? true:false,
-                                })
-                            }}
-                        />
-                        Opportunity Zone
-                    </label>
-                    </div>    
+                        type="checkbox" 
+                        name="opportunity" 
+                        onChange={(e)=>{
+                            setProperty({
+                                ...property,
+                                opportunity: e.target.value == "on" ? true:false,
+                            })
+                        }}
+                    />
+                    Opportunity Zone
+                </label>
+                </div>    
                 <br></br>    
+                <h2>Tenant Information</h2>
+    
+            <input
+							name="tenantOccupancy"
+							onChange={handleChange}
+							value={property.tenantOccupancy}
+							className="form-control"
+							placeholder="tenantOccupancy"
+							type="number"
+						/>
+
+						<select class="form-select" 
+							name="tenantSingleMulti"
+							onChange={handleChange}
+						>
+							{
+							SingleMultiOptions.map(item => {
+									return (
+											<option value={item}>{item}</option>  
+									)
+							})
+							}
+						</select>
+
+						<input
+							name="leaseYearsLeft"
+							onChange={handleChange}
+							value={property.leaseYearsLeft}
+							className="form-control"
+							placeholder="leaseYearsLeft"
+							type="text"
+						/> 
+						<input
+							name="leaseEndDate"
+							onChange={handleChange}
+							value={property.leaseEndDate}
+							className="form-control"
+							placeholder="leaseEndDate"
+							type="text"
+						/> 
+
                 <h2>Ownership Information</h2>
                 <input
                     name="holder"

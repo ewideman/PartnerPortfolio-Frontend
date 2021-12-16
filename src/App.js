@@ -9,21 +9,6 @@ import AddPropertyView from './views/AddProperyView';
 import PropertyDetailsView from './views/PropertyDetailsView';
 import UpdatePropertyView from './views/UpdatePropertyView';
 import SignupView from './views/SignupView';
-// layout components
-// import SignupView from './views/SignupView';
-
-import firebase from 'firebase/app';
-import "firebase/auth";
-import firebaseConfig  from './firebase-config';
-
-
-if (!firebase.apps.length){
-  firebase.initializeApp(firebaseConfig);
-  console.log("firebase init success")
-}else{
-  firebase.app();
-}
-
 
 function App() {
   return (

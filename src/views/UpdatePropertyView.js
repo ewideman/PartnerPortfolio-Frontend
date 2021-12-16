@@ -1,8 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate, useLocation } from "react-router-dom";
 // import property from "../../../portfolio-backend/models/property";
-
+import { PropertyTypes,
+	YearsBuilt,
+	Ratings,
+	SingleMultiOptions} from "../constant/options";
 const UpdatePropertyView = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -63,90 +66,199 @@ console.log("id",location.pathname.split('/').pop())
 
     return (
         <div className="container mt-5">
-            <form className="form">
-                <h2>Property Information</h2>
-                <input
-                    onChange={handleChange}
-                    value={property.name}
-                    name="name"
-                    className="form-control"
-                    placeholder="Name"
-                    type="text"
+        <form className="form">
+            <h2>Property Information</h2>
+            <input
+                onChange={handleChange}
+                value={property.name}
+                name="name"
+                className="form-control"
+                placeholder="Name"
+                type="text"
+            />
+            <input
+                name="address"
+                onChange={handleChange}
+                value={property.address}
+                className="form-control"
+                placeholder="Address"
+                type="text"
+            />
+            <input
+                name="price"
+                onChange={handleChange}
+                value={property.price}
+                className="form-control"
+                placeholder="Price"
+                type="number"
+            />
+             <input
+                onChange={handleChange}
+                value={property.irr}
+                name="irr"
+                className="form-control"
+                placeholder="Internal Rate of Return Percentage"
+                type="number"
+            />
+            
+            <select class="form-select" 
+                name="propertyType"
+                onChange={handleChange}
+            >
+                {
+                PropertyTypes.map(item => {
+                    return (
+                        <option value={item}>{item}</option>  
+                    )
+                })
+                }
+            </select>
+            <select class="form-select" 
+                name="yearBuilt"
+                onChange={handleChange}
+            >
+                {
+                YearsBuilt.map(item => {
+                    return (
+                        <option value={item}>{item}</option>  
+                    )
+                })
+                }
+            </select>
+            <select class="form-select" 
+                name="bldgRating"
+                onChange={handleChange}
+            >
+                {
+                Ratings.map(item => {
+                    return (
+                        <option value={item}>{item}</option>  
+                    )
+                })
+                }
+            </select>
+            
+            <input
+                onChange={handleChange}
+                value={property.bldgCredit}
+                name="bldgCredit"
+                className="form-control"
+                placeholder="Property Square Feet"
+            />
+                        
+            <input
+                onChange={handleChange}
+                value={property.bSize}
+                name="bSize"
+                className="form-control"
+                placeholder="size"
+                type="number"
+            />
+            <input
+                name="imageUrl"
+                onChange={handleChange}
+                value={property.imageUrl}
+                className="form-control"
+                placeholder="imgUrl"
+                type="text"
+            />        
+            <div class="checkbox">
+            <label>
+            <input 
+                    type="checkbox" 
+                    name="opportunity" 
+                    onChange={(e)=>{
+                        setProperty({
+                            ...property,
+                            opportunity: e.target.value == "on" ? true:false,
+                        })
+                    }}
                 />
-                <input
-                    name="address"
-                    onChange={handleChange}
-                    value={property.address}
-                    className="form-control"
-                    placeholder="Address"
-                    type="text"
-                />
-                <input
-                    name="price"
-                    onChange={handleChange}
-                    value={property.price}
-                    className="form-control"
-                    placeholder="Price"
-                    type="number"
-                />
-                <input
-                    onChange={handleChange}
-                    value={property.Irr}
-                    name="IRR"
-                    className="form-control"
-                    placeholder="Internal Rate of Return Percentage"
-                    type="number"
-                />
-                <input
-                    name="imageUrl"
-                    onChange={handleChange}
-                    value={property.imageUrl}
-                    className="form-control"
-                    placeholder="imgUrl"
-                    type="text"
-                />            
-                <br></br>    
-                <h2>Ownership Information</h2>
-                <input
-                    name="holder"
-                    onChange={handleChange}
-                    value={property.holder}
-                    className="form-control"
-                    placeholder="Holding Company/ LCC"
-                    type="text"
-                /> 
-                <input
-                    name="mPartner"
-                    onChange={handleChange}
-                    value={property.mPartner}
-                    className="form-control"
-                    placeholder="Managing Parnter"
-                    type="string"
-                /> 
-                
-                <input
-                    name="hPhone"
-                    onChange={handleChange}
-                    value={property.hPhone}
-                    className="form-control"
-                    placeholder="Phone Number"
-                    type="string"
-                /> 
-                <input
-                    name="hEmail"
-                    onChange={handleChange}
-                    value={property.hEmail}
-                    className="form-control"
-                    placeholder="Email"
-                    type="string"
-                /> 
-                <button
-                    onClick={handleSubmit}
-                    className="btn btn-outline-dark form-control">
-                    Update
-                </button>
-            </form>
-        </div>
+                Opportunity Zone
+            </label>
+            </div>    
+            <br></br>    
+            <h2>Tenant Information</h2>
+        <input
+                        name="tenantOccupancy"
+                        onChange={handleChange}
+                        value={property.tenantOccupancy}
+                        className="form-control"
+                        placeholder="tenantOccupancy"
+                        type="number"
+                    />
+
+                    <select class="form-select" 
+                        name="tenantSingleMulti"
+                        onChange={handleChange}
+                    >
+                        {
+                        SingleMultiOptions.map(item => {
+                                return (
+                                        <option value={item}>{item}</option>  
+                                )
+                        })
+                        }
+                    </select>
+
+                    <input
+                        name="leaseYearsLeft"
+                        onChange={handleChange}
+                        value={property.leaseYearsLeft}
+                        className="form-control"
+                        placeholder="leaseYearsLeft"
+                        type="text"
+                    /> 
+                    <input
+                        name="leaseEndDate"
+                        onChange={handleChange}
+                        value={property.leaseEndDate}
+                        className="form-control"
+                        placeholder="leaseEndDate"
+                        type="text"
+                    /> 
+
+            <h2>Ownership Information</h2>
+            <input
+                name="holder"
+                onChange={handleChange}
+                value={property.holder}
+                className="form-control"
+                placeholder="Holding Company/ LCC"
+                type="text"
+            /> 
+            <input
+                name="mPartner"
+                onChange={handleChange}
+                value={property.mPartner}
+                className="form-control"
+                placeholder="Managing Parnter"
+                type="string"
+            /> 
+            
+            <input
+                name="hPhone"
+                onChange={handleChange}
+                value={property.hPhone}
+                className="form-control"
+                placeholder="Phone Number"
+                type="string"
+            /> 
+            <input
+                name="hEmail"
+                onChange={handleChange}
+                value={property.hEmail}
+                className="form-control"
+                placeholder="Email"
+                type="string"
+            /> 
+      <button
+                onClick={handleSubmit}
+                className="btn btn-outline-dark form-control">
+                Update
+            </button>
+        </form>
+    </div>
     );
 };
 
