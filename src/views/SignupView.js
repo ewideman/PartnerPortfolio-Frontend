@@ -65,7 +65,7 @@ const SignupView= () => {
             value={user.password}
             className="form-control"
             placeholder="password"
-            type="text"
+            type="password"
         />
         <button 
             onClick={handleSubmit}

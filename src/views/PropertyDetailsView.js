@@ -31,17 +31,19 @@ const PropertyDetailsView = () => {
 
                     <Carousel slides={property.carousel || []} />
 
-                    
+                    <br/>
+                    <hr/>
 
                     <Container className="mt-3">
                         <Row>
+            
                             <Col sm={6}>
-                                <h2>{property.name}</h2>
+                                <h2>General Information</h2>
                                 <Table>
                                     <tbody>
-                                        <tr>
-                                            <td>IRR %:</td>
-                                            <td>{property.irr}</td>
+                                    <tr>
+                                            <td>Name:</td>
+                                            <td>{property.name}</td>
                                         </tr>
                                         <tr>
                                             <td>Address:</td>
@@ -50,6 +52,91 @@ const PropertyDetailsView = () => {
                                         <tr>
                                             <td>Estimated Value:</td>
                                             <td>${property.price}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>IRR %:</td>
+                                            <td>{property.irr}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Col>
+                            <Col sm={6}>
+                                <h2> Building Information </h2>
+                                <Table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Property Type</td>
+                                            <td>{property.propertyTypes}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Year Built:</td>
+                                            <td>{property.yearBuilt}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Credit Rating:</td>
+                                            <td>{property.bldgCredit}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Size:</td>
+                                            <td>{property.bSize}sqft</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Number of floors:</td>
+                                            <td>{property.floorNumber}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Floor Plate:</td>
+                                            <td>{property.floorPlate}sqft</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Opportunity Zone:</td>
+                                            <td>{property.Opportunity ? '✅' : '❌'}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Col>
+                            <Col sm={6}>
+                                <h2>Tenant Information</h2>
+                                <Table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Tenant Occupancy:</td>
+                                            <td>{property.tenantOccupancy}%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Single or Multi Tenant:</td>
+                                            <td>{property.tenantSingleMulti}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Years Left on Lease:</td>
+                                            <td>{property.leaseYearsLeft}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lease End Date:</td>
+                                            <td>{property.leaseEndDate}</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </Col>
+                            <Col sm={6}>
+                                <h2>Parking information</h2>
+                                <Table>
+                                    <tbody>
+                                        <tr>
+                                            <td>Parking Spaces:</td>
+                                            <td>{property.parkingSpaces}</td>
+                                        </tr>
+                                        {/* <tr>
+                                            <td>Single or Multi Tenant:</td>
+                                            <td>{property.tenantSingleMulti}</td>
+                                        </tr> */}
+                                        <tr>
+                                            <td>Parking Ratio:</td>
+                                            <td>{property.parkingRatio}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Parking Revenue:</td>
+                                            <td>{property.parkingRevenue}</td>
                                         </tr>
                                     </tbody>
                                 </Table>

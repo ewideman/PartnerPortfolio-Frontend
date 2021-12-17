@@ -100,200 +100,294 @@ const UpdatePropertyView = () => {
     return (
         <div className="container mt-5">
             <form className="form">
-                <h2>Property Information</h2>
+                <h2>General Information</h2>
+                    <hr/>
+                    <br/>
+                    <p>Name</p>
                 <input
                     onChange={handleChange}
                     value={property.name}
                     name="name"
                     className="form-control"
-                    placeholder="Name"
+                    placeholder="The White House"
                     type="text"
                 />
+                    <br/>
+                    <p>Address</p>
                 <input
                     name="address"
                     onChange={handleChange}
                     value={property.address}
                     className="form-control"
-                    placeholder="Address"
+                    placeholder="1600 Pennsylvania Avenue NW, Washington, DC 20500"
                     type="text"
                 />
+                    <br/>
+                    <p>Price</p>
                 <input
                     name="price"
                     onChange={handleChange}
                     value={property.price}
                     className="form-control"
-                    placeholder="Price"
+                    placeholder="10000000"
                     type="number"
                 />
-                <input
+                    <br/>
+                    <p>Internal Rate of Return Percentage</p>
+                 <input
                     onChange={handleChange}
                     value={property.irr}
                     name="irr"
                     className="form-control"
-                    placeholder="Internal Rate of Return Percentage"
+                    placeholder="2"
                     type="number"
                 />
+                    <br/>
+                    <p>Image URL</p>
+                 <input
+                    name="imageUrl"
+                    onChange={handleChange}
+                    value={property.imageUrl}
+                    className="form-control"
+                    placeholder="www.image.url.com"
+                    type="text"
+                />        
+                <br/>
+                <br/>
 
-                <select class="form-select"
+                <h2>Property Information</h2>
+                <hr/>
+                <br/>
+                    <p>Property Type</p>
+                <select class="form-select" 
                     name="propertyType"
                     onChange={handleChange}
                 >
                     {
-                        PropertyTypes.map(item => {
-                            return (
-                                <option value={item}>{item}</option>
-                            )
-                        })
+                    PropertyTypes.map(item => {
+                        return (
+                            <option value={item}>{item}</option>  
+                        )
+                    })
                     }
                 </select>
-                <select class="form-select"
-                    name="yearBuilt"
+                <br/>
+                <p>Year Built</p>
+               <input
                     onChange={handleChange}
-                >
-                    {
-                        YearsBuilt.map(item => {
-                            return (
-                                <option value={item}>{item}</option>
-                            )
-                        })
-                    }
-                </select>
-                <select class="form-select"
+                    value={property.yearBuilt}
+                    name="yearBuilt"
+                    className="form-control"
+                    placeholder="1792"
+                    type="number"
+                />
+                <br/>
+                <p>Building Rating</p>
+
+								<select class="form-select" 
                     name="bldgRating"
                     onChange={handleChange}
                 >
                     {
-                        Ratings.map(item => {
-                            return (
-                                <option value={item}>{item}</option>
-                            )
-                        })
+                    Ratings.map(item => {
+                        return (
+                            <option value={item}>{item}</option>  
+                        )
+                    })
                     }
                 </select>
-
+                <br/>
+                <p>Building Credit</p>
                 <input
                     onChange={handleChange}
                     value={property.bldgCredit}
                     name="bldgCredit"
                     className="form-control"
-                    placeholder="Property Square Feet"
-                />
-
+                    placeholder="AAA"
+                />		
+                <br/>
+                <p>Square Footage</p>	
                 <input
                     onChange={handleChange}
                     value={property.bSize}
                     name="bSize"
                     className="form-control"
-                    placeholder="size"
+                    placeholder="54900"
                     type="number"
                 />
+                <br/>
+                <p>Number of Floors</p>
                 <input
-                    name="imageUrl"
                     onChange={handleChange}
-                    value={property.imageUrl}
+                    value={property.floorNumber}
+                    name="floorNumber"
                     className="form-control"
-                    placeholder="imgUrl"
-                    type="text"
+                    placeholder="3"
+                    type="number"
+                />
+                <br/>
+                <p>Floor Plate</p>
+                 <input
+                    onChange={handleChange}
+                    value={property.floorPlate}
+                    name="floorPlate"
+                    className="form-control"
+                    placeholder="20000"
+                    type="number"
                 />
                 <div class="checkbox">
-                    <label>
-                        <input
-                            type="checkbox"
-                            name="opportunity"
-                            onChange={(e) => {
-                                setProperty({
-                                    ...property,
-                                    opportunity: e.target.value == "on" ? true : false,
-                                })
-                            }}
-                        />
-                        Opportunity Zone
-                    </label>
-                </div>
-                <br></br>
+                <label>
+                    <br/>
+                <input 
+                        type="checkbox" 
+                        name="opportunity" 
+                        onChange={(e)=>{
+                            setProperty({
+                                ...property,
+                                opportunity: e.target.value == "on" ? true:false,
+                            })
+                        }}
+                    />
+                    Opportunity Zone
+                </label>
+                </div>    
+                <br></br>    
+                <br/>
                 <h2>Tenant Information</h2>
-                <input
-                    name="tenantOccupancy"
-                    onChange={handleChange}
-                    value={property.tenantOccupancy}
-                    className="form-control"
-                    placeholder="tenantOccupancy"
-                    type="number"
-                />
+                <hr/>
+                <br/>
+                <p>Tenant Occupancy Percentage</p>
+            <input
+							name="tenantOccupancy"
+							onChange={handleChange}
+							value={property.tenantOccupancy}
+							className="form-control"
+							placeholder="100"
+							type="number"
+						/>
+                <br/>
+                <p>Single or Multi Tenant</p>
 
-                <select class="form-select"
-                    name="tenantSingleMulti"
+						<select class="form-select" 
+							name="tenantSingleMulti"
+							onChange={handleChange}
+						>
+							{
+							SingleMultiOptions.map(item => {
+									return (
+											<option value={item}>{item}</option>  
+									)
+							})
+							}
+						</select>
+                        <br/>
+                        <p>Years of Lease Remaining</p>
+						<input
+							name="leaseYearsLeft"
+							onChange={handleChange}
+							value={property.leaseYearsLeft}
+							className="form-control"
+							placeholder="3"
+							type="text"
+						/> 
+                        <br/>
+                        <p>Lease End Date</p>
+						<input
+							name="leaseEndDate"
+							onChange={handleChange}
+							value={property.leaseEndDate}
+							className="form-control"
+							placeholder="01/24/2024"
+							type="text"
+						/> 
+                <br/>
+                <br/>
+                <h2>Parking Information</h2>
+                <hr/>
+                <br/>
+                <p>Parking Spaces</p>
+                <input
+                    name="parkingSpaces"
                     onChange={handleChange}
-                >
-                    {
-                        SingleMultiOptions.map(item => {
-                            return (
-                                <option value={item}>{item}</option>
-                            )
-                        })
-                    }
-                </select>
+                    value={property.parkingSpaces}
+                    className="form-control"
+                    placeholder="100"
+                    type="Number of Parking Spaces"
+                /> 
+                <br/>
+                <p>Parking Ratio</p>
 
                 <input
-                    name="leaseYearsLeft"
+                    name="Parking Ratio"
                     onChange={handleChange}
-                    value={property.leaseYearsLeft}
+                    value={property.mPartner}
                     className="form-control"
-                    placeholder="leaseYearsLeft"
-                    type="text"
-                />
+                    placeholder="1:5"
+                    type="string"
+                /> 
+                <br/>
+                <p>Parking Revenue</p>
                 <input
-                    name="leaseEndDate"
+                    name="parkingRevenue"
                     onChange={handleChange}
-                    value={property.leaseEndDate}
+                    value={property.hPhone}
                     className="form-control"
-                    placeholder="leaseEndDate"
-                    type="text"
-                />
-
-                {/* Ownership */}
+                    placeholder="Parking Revenue"
+                    type="string"
+                /> 
+                <br/>
+                <br/>
                 <h2>Ownership Information</h2>
+                <hr/>
+                <br/>
+                <p>Holding Company/LCC</p>
                 <input
                     name="holder"
                     onChange={handleChange}
                     value={property.holder}
                     className="form-control"
-                    placeholder="Holding Company/ LCC"
+                    placeholder="The Business Factory"
                     type="text"
-                />
+                /> 
+                <br/>
+                <p>Managing Parnter</p>
                 <input
                     name="mPartner"
                     onChange={handleChange}
                     value={property.mPartner}
                     className="form-control"
-                    placeholder="Managing Parnter"
+                    placeholder="Vincent Adultman"
                     type="string"
-                />
-
+                /> 
+                <br/>
+                <p>Phone Number</p>
                 <input
                     name="hPhone"
                     onChange={handleChange}
                     value={property.hPhone}
                     className="form-control"
-                    placeholder="Phone Number"
+                    placeholder="555 555 5555"
                     type="string"
-                />
+                /> 
+                <br/>
+                <p>Email</p>
                 <input
                     name="hEmail"
                     onChange={handleChange}
                     value={property.hEmail}
                     className="form-control"
-                    placeholder="Email"
+                    placeholder="fake@gmail.com"
                     type="string"
-                />
-
+                /> 
+                <br/>
+                <br/>
                 {/* Carousel */}
                 <h2>Carousel</h2>
                 {(property.carousel || []).map((slide, index) => (
                     <div key={slide.title}>
                         <hr />
                         <h3>Slide {index + 1}</h3>
-
+                        <br/>
                         <label>URL</label>
                         <input
                             name={`carousel.${index}.url`}
@@ -303,6 +397,7 @@ const UpdatePropertyView = () => {
                             placeholder="URL"
                             type="string"
                         />
+                        <br/>
                         <label>Title</label>
                         <input
                             name={`carousel.${index}.title`}
@@ -312,6 +407,7 @@ const UpdatePropertyView = () => {
                             placeholder="Title"
                             type="string"
                         />
+                        <br/>
                         <label>Label</label>
                         <input
                             name={`carousel.${index}.label`}
@@ -321,6 +417,7 @@ const UpdatePropertyView = () => {
                             placeholder="Label"
                             type="string"
                         />
+                        <br/>
                         <label>Text</label>
                         <input
                             name={`carousel.${index}.text`}
@@ -330,7 +427,7 @@ const UpdatePropertyView = () => {
                             placeholder="Text"
                             type="string"
                         />
-                        
+                        <br/>
                         <Button variant="danger" className="mt-2" onClick={(event) => removeSlide(event, index)}>Remove slide</Button>
                     </div>
                 ))}

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 const PropertyCard = ({ obj, isAdmin }) => {
     const apiUrl = process.env.REACT_APP_API_URL;
 
+    console.log(obj)
+
     async function handlePostDelete(event) {
         event.preventDefault();
         const response = await axios.delete(`${apiUrl}/properties/property/${obj._id}`);
@@ -27,20 +29,26 @@ const PropertyCard = ({ obj, isAdmin }) => {
                 <Card.Text>
                     Estimated Value: ${obj.price}
                 </Card.Text>
-                <Link className="btn btn-outline-primary" 
-                //to={`${apiUrl}/property/properties`}
-                to={`/property/${obj._id}`}
-                >
-                    View More
-                </Link>
-                {isAdmin =="true" &&   <button className="btn btn-outline-primary"
-                    onClick={handlePostDelete}>
-                    delete
-                </button>}
-                 {isAdmin =="true" && <Link className='btn btn-outline-primary' to={`/update/${obj._id}`}>
-                    update
-                </Link>}
-              
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <Link className="btn btn-outline-primary"
+                        //to={`${apiUrl}/property/properties`}
+                        to={`/property/${obj._id}`}
+                    >
+                        View More
+                    </Link>
+                    {isAdmin == "true" && (
+                        <button className="btn btn-outline-primary"
+                            onClick={handlePostDelete}>
+                            delete
+                        </button>
+                    )}
+                    {isAdmin == "true" && (
+                        <Link className='btn btn-outline-primary' to={`/update/${obj._id}`}>
+                            update
+                        </Link>
+                    )}
+                </div>
+
             </Card.Body>
         </Card>
 

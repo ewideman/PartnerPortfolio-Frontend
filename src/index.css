@@ -22,6 +22,7 @@ form {
   border: 3px solid #C63;
   border-radius: 2px;
   box-shadow: 0 7px 5px -3px #999;
+  border-radius: 10px;
 }
 
 .property-list-container {
@@ -29,9 +30,27 @@ form {
   margin-bottom: 40px;
 }
 
+nav a {
+  text-decoration: none;
+}
+
+.carousel, .card {
+  border-radius: 10px !important;
+  overflow: hidden;
+  box-shadow: 0 3px 3px #EEE;
+}
+
+.carousel {
+  box-shadow: 0 3px 3px #CCC;
+}
+
+.card-title, h2 {
+  font-weight: bold !important;
+}
+
 /*.navbar-nav a {
   margin-right: 10px;
-  text-decoration: none;
+  text-decoration: none;z
   background: #EEE;
   border-radius: 3px;
   padding: 2px 10px 4px;
